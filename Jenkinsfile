@@ -1,5 +1,9 @@
 pipeline {
   agent any
+  tools {
+        maven 'Maven 3.6.3'
+    }
+  
   stages {
     stage('checkout') {
       steps {
@@ -7,19 +11,15 @@ pipeline {
       }
     }
 
-    stage('setup') {
-      steps {
-        tool(name: 'maven', type: 'maven')
-      }
-    }
-
     stage('test') {
-      environment {
-        PATH = '"/var/jenkins_home/tools/hudson.tasks.Maven_MavenInstallation/maven/bin:$PATH"'
-      }
       steps {
         sh 'mvn clean test'
       }
+      post {
+            always {
+                junit 'target/surefire-reports/**/*.xml' 
+            }
+        }
     }
 
   }
