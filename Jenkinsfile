@@ -1,5 +1,8 @@
 pipeline {
   agent any
+  environment {
+    PATH="/var/jenkins_home/tools/hudson.tasks.Maven_MavenInstallation/maven/bin:$PATH"
+  }
   stages {
     stage('checkout') {
       steps {
@@ -10,7 +13,7 @@ pipeline {
     stage('setup') {
       steps {
         tool(name: 'maven', type: 'maven')
-        sh 'PATH="/var/jenkins_home/tools/hudson.tasks.Maven_MavenInstallation/maven/bin:$PATH"'
+       
       }
     }
 
