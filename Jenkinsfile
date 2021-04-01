@@ -10,13 +10,12 @@ pipeline {
     stage('setup') {
       steps {
         tool(name: 'maven', type: 'maven')
-        sh 'export PATH=$PATH:/var/jenkins_home/tools/hudson.tasks.Maven_MavenInstallation/maven/bin'
       }
     }
 
     stage('test') {
       steps {
-        sh 'mvn clean test'
+        sh '/var/jenkins_home/tools/hudson.tasks.Maven_MavenInstallation/maven/bin/mvn clean test'
       }
     }
 
