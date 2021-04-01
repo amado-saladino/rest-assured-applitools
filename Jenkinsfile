@@ -10,6 +10,7 @@ pipeline {
     stage('setup') {
       steps {
         tool(name: 'maven', type: 'maven')
+        sh 'export PATH=$PATH:/var/jenkins_home/tools/hudson.tasks.Maven_MavenInstallation/maven/bin'
       }
     }
 
