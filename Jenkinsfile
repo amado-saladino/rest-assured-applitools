@@ -21,6 +21,6 @@ pipeline {
 
   }
   environment {
-    PATH = '/var/jenkins_home/tools/hudson.tasks.Maven_MavenInstallation/maven/bin:$PATH'
+    PATH = "/var/jenkins_home/tools/hudson.tasks.Maven_MavenInstallation/maven/bin:$PATH"
   }
 }
