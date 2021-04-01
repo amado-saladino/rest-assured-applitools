@@ -8,6 +8,9 @@ pipeline {
     }
 
     stage('setup') {
+      environment {
+        PATH = '$PATH:/var/jenkins_home/tools/hudson.tasks.Maven_MavenInstallation/maven/bin'
+      }
       steps {
         tool(name: 'maven', type: 'maven')
       }
@@ -15,7 +18,7 @@ pipeline {
 
     stage('test') {
       steps {
-        sh '/var/jenkins_home/tools/hudson.tasks.Maven_MavenInstallation/maven/bin/mvn clean test'
+        sh 'mvn clean test'
       }
     }
 
