@@ -1,13 +1,15 @@
 pipeline {
-  agent any
-  tools {
-        maven "3.6.3" //You need to add a maven with name "3.6.3" in the Global Tools Configuration page
+  agent {
+        docker {
+            image 'maven:3-alpine'
+            args '-v maven-repo:/root/.m2'
+        }
     }
   
   stages {
     stage('checkout') {
       steps {
-        git(url: 'https://github.com/amado-saladino/rest-assured-applitools.git', branch: 'master')
+        git(url: "https://github.com/amado-saladino/rest-assured-applitools.git", branch: 'docker')
       }
     }
 
